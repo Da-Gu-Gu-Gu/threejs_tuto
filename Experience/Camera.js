@@ -36,17 +36,19 @@ export default class Camera{
        -100,
        100
         )
-            this.scene.add(this.orthorgraphicCamera)
-            this.helper=new THREE.CameraHelper(this.orthorgraphicCamera)
-            this.scene.add(this.helper)
 
-            const size=10
-            const divisions=10
-            const gridHelper=new THREE.GridHelper(size,divisions)
-            this.scene.add(gridHelper)
+        this.orthorgraphicCamera.position.x=0
+        this.orthorgraphicCamera.position.y=1
+        this.orthorgraphicCamera.position.z=2
+        this.orthorgraphicCamera.lookAt(0,0,0)
+        // this.orthorgraphicCamera.rotation.x=-Math.PI/4
 
-            // const axeHelper=new THREE.AxesHelper(size)
-            // this.scene.add(axeHelper)
+
+        this.scene.add(this.orthorgraphicCamera)
+            // this.helper=new THREE.CameraHelper(this.orthorgraphicCamera)
+            // this.scene.add(this.helper)
+
+         
 
       
     }
@@ -73,8 +75,8 @@ export default class Camera{
     update(){
         // console.log(this.perspectiveCamera.position)
         this.controls.update()
-        this.helper.matrixWorldNeedsUpdate=true
-        this.helper.position.copy(this.orthorgraphicCamera.position)
-        this.helper.rotation.copy(this.orthorgraphicCamera.rotation)
+        // this.helper.matrixWorldNeedsUpdate=true
+        // this.helper.position.copy(this.orthorgraphicCamera.position)
+        // this.helper.rotation.copy(this.orthorgraphicCamera.rotation)
     }
 }

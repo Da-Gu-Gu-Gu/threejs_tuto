@@ -14,3 +14,42 @@
   width: 100%;
   height: 100%;
 }
+
+/* asdf */
+.page{
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  overflow:hidden;
+}
+
+.page-wrapper{
+  position: relative;
+}
+
+/* hero */
+
+.hero{
+  width: 100vw;
+  height: 100vh;
+}
+
+.hero-wrapper{
+  position: relative;
+  height: 100%;
+  /* background-color: red; */
+  width: 40%;
+  margin:0 auto;
+}
+
+.hero-main{
+  position: absolute;
+  bottom:368px;
+  left: 0;
+}
+
+.hero-second{
+  position: absolute;
+  top:100px;
+  right: 0;
+}

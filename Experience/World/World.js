@@ -4,6 +4,7 @@ import * as THREE from 'three'
 import Room from './Room'
 import Environment from './Environment'
 import Controls from './Controls'
+import Floor from './Floor'
 
 export default class World{
     constructor(){
@@ -19,6 +20,7 @@ export default class World{
         this.room=new Room()
         this.environment=new Environment()
         this.controls=new Controls()
+        this.floor=new Floor()
     })
 
         // const geometry = new THREE.BoxGeometry( 1, 1, 1 );
@@ -40,6 +42,9 @@ export default class World{
         
     }
     update(){
+        if(this.room){
+            this.room.update()
+        }
         if(this.controls){
             this.controls.update()
         }
