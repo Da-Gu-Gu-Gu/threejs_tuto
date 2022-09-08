@@ -1,5 +1,7 @@
 export default [
     {
-        name:"house"
+        name:"model",
+        type:'glbModel',
+        path:'/models/l.glb'
     }
 ]

@@ -1,5 +1,6 @@
 import Experience from "./experience"
 import * as THREE from 'three'
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls'
 
 export default class Camera{
     constructor(){
@@ -10,6 +11,7 @@ export default class Camera{
 
         this.createPerspectiveCamera()
         this.createOrthorgraphicCamera()
+        this.setOrbitControls()
     }
     createPerspectiveCamera(){
         this.perspectiveCamera=new THREE.PerspectiveCamera(
@@ -19,8 +21,10 @@ export default class Camera{
             1000)
        
         this.scene.add(this.perspectiveCamera)
-        this.perspectiveCamera.position.z=10
-        this.perspectiveCamera.position.y=10
+        this.perspectiveCamera.position.x=5.4
+        this.perspectiveCamera.position.y=1
+        this.perspectiveCamera.position.z=3.6
+      
     }
     createOrthorgraphicCamera(){
         this.frustrum=5
@@ -32,8 +36,27 @@ export default class Camera{
        -100,
        100
         )
-        this.scene.add(this.orthorgraphicCamera)
+            this.scene.add(this.orthorgraphicCamera)
+            this.helper=new THREE.CameraHelper(this.orthorgraphicCamera)
+            this.scene.add(this.helper)
+
+            const size=10
+            const divisions=10
+            const gridHelper=new THREE.GridHelper(size,divisions)
+            this.scene.add(gridHelper)
+
+            // const axeHelper=new THREE.AxesHelper(size)
+            // this.scene.add(axeHelper)
+
+      
     }
+
+    setOrbitControls(){
+        this.controls=new OrbitControls(this.perspectiveCamera,this.canvas)
+        this.controls.enableDamping=true
+        this.controls.enableZoom=true
+    }
+
     resize(){
 
         //update perspective
@@ -47,5 +70,11 @@ export default class Camera{
         this.orthorgraphicCamera.bottom=-this.frustrum/2
         this.orthorgraphicCamera.updateProjectionMatrix()
     }
-    update(){}
+    update(){
+        // console.log(this.perspectiveCamera.position)
+        this.controls.update()
+        this.helper.matrixWorldNeedsUpdate=true
+        this.helper.position.copy(this.orthorgraphicCamera.position)
+        this.helper.rotation.copy(this.orthorgraphicCamera.rotation)
+    }
 }
