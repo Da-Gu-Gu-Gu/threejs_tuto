@@ -14,7 +14,7 @@ export default class World{
         this.camera=this.experience.camera
         this.canvas=this.experience.canvas
         this.resources=this.experience.resources
-
+        this.theme=this.experience.theme
      
          this.resources.on("ready",()=>{
         this.room=new Room()
@@ -23,15 +23,19 @@ export default class World{
         this.floor=new Floor()
     })
 
-        // const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-        // const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-       
+    this.theme.on("switch",(theme)=>{
+        this.switchTheme(theme)
+    })
 
 
-        // const cube=new THREE.Mesh(geometry,material)
-        // cube.position.set(0,10,3)
-        // this.scene.add(cube)
+
         
+    }
+
+    switchTheme(theme){
+        if(this.environment){
+            this.environment.switchTheme(theme)
+        }
     }
 
     setRenderer(){

@@ -6,6 +6,7 @@ import Time from "./utils/Time";
 import World from "./World/World";
 import Resources from "./utils/Resources";
 import assets from "./utils/assets";
+import Theme from "./Theme";
 
 export default class Experience {
     static instance
@@ -22,7 +23,9 @@ export default class Experience {
     this.render=new Renderer()
     this.times=new Time()
     this.resources=new Resources(assets)
+    this.theme=new Theme()
     this.world=new World()
+  
 
 
     console.log(this.scene)
