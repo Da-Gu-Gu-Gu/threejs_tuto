@@ -33,6 +33,7 @@ export default class Room{
                 })
             }
 
+            // child.scale.set(0,0,0)
 
             // if(this.actualRoom.children[2].children[12]){
             //     console.log('twae p')
