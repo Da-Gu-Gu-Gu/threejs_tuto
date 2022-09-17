@@ -7,6 +7,7 @@ import World from "./World/World";
 import Resources from "./utils/Resources";
 import assets from "./utils/assets";
 import Theme from "./Theme";
+import Preloader from "./Preloader";
 
 export default class Experience {
     static instance
@@ -25,7 +26,7 @@ export default class Experience {
     this.resources=new Resources(assets)
     this.theme=new Theme()
     this.world=new World()
-  
+    this.preloader=new Preloader()
 
 
     console.log(this.scene)
